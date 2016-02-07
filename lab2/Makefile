@@ -22,7 +22,7 @@ PROGS = spell
 all: $(PROGS)
 
 spell: dictionary.o spell.o word.o
-	# $(CXX) $(CXXFLAGS) dictionary.o spell.o -o main
+	$(CXX) $(CXXFLAGS) dictionary.o spell.o word.o -o $(PROGS)
 # Targets rely on implicit rules for compiling and linking
 gen: 
 	$(CXX) $(CXXFLAGS) genTri.cc -o genTri && ./genTri
