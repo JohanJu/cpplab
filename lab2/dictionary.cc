@@ -22,7 +22,7 @@ Dictionary::Dictionary() {
 }
 
 bool Dictionary::contains(const string& word) const {
-	return (words.find(word) != words.end());
+	return words.count(word);
 }
 
 vector<string> Dictionary::get_suggestions(const string& word) const {

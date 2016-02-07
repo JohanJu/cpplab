@@ -17,18 +17,23 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = dictionary spell
+PROGS = spell
 
-all: dictionary.o spell.o
-	$(CXX) $(CXXFLAGS) dictionary.o spell.o -o main
+all: $(PROGS)
+
+spell: dictionary.o spell.o word.o
+	# $(CXX) $(CXXFLAGS) dictionary.o spell.o -o main
 # Targets rely on implicit rules for compiling and linking
 gen: 
 	$(CXX) $(CXXFLAGS) genTri.cc -o genTri && ./genTri
 
 dic:
 	$(CXX) $(CXXFLAGS) dictionary.cc -o dic && ./dic
+
+word:
+	$(CXX) $(CXXFLAGS) word.cc -o word && ./word
 # Phony targets
-.PHONY: all clean dic
+.PHONY: all clean dic word
 
 # Standard clean
 clean:
