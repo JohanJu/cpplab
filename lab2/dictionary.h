@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <unordered_set>
+#include "word.h"
 
 class Dictionary {
 public:
@@ -11,7 +12,9 @@ public:
 	bool contains(const std::string& word) const;
 	std::vector<std::string> get_suggestions(const std::string& word) const;
 private:
-	std::unordered_set<std::string> words;
+	// void add_trigram_suggestions(std::vector<std::string>& suggestions,const std::string& word);
+	std::unordered_set<std::string> raw;
+	std::vector<Word> words[25];
 };
 
 #endif

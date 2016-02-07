@@ -23,7 +23,7 @@ unsigned int Word::get_matches(const vector<string>& t) const {
 			int c = s.compare(tri[i]);
 			if(c==0){
 				++nbr;
-				break;
+				// break;
 			}
 			else if(c<0)
 				break;
@@ -36,9 +36,9 @@ unsigned int Word::get_matches(const vector<string>& t) const {
 // int main(){
 
 // 	// anderson 6 and der ers nde rso son
-// 	vector<string> tri{"and", "der", "ers", "nde", "rso", "son"};
-// 	vector<string> comp{"and", "drr", "ers", "nde", "rso", "son","son","xsa","xss"};
-// 	Word w("anderson",tri);
-// 	string s = "anderson";
+// 	vector<string> tri{"ari", "iel", "rie"};
+// 	vector<string> comp{"ari", "iel", "rie"};
+// 	Word w("ariel",tri);
+// 	string s = "ariel";
 // 	cout << w.get_matches(comp)<< endl;
 // }

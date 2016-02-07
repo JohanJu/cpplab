@@ -28,7 +28,7 @@ gen:
 	$(CXX) $(CXXFLAGS) genTri.cc -o genTri && ./genTri
 
 dic:
-	$(CXX) $(CXXFLAGS) dictionary.cc -o dic && ./dic
+	$(CXX) $(CXXFLAGS) dictionary.cc word.cc -o dic && ./dic
 
 word:
 	$(CXX) $(CXXFLAGS) word.cc -o word && ./word
