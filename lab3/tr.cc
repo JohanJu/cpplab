@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <regex>
 
 using namespace std;
 
@@ -24,6 +25,8 @@ public:
 		}
 	}
 	void trans() {
+		// regex e("&[a-z]+");
+		// smatch m;
 		unsigned i;
 		for ( i = 0; i < s.size(); ++i)
 		{
@@ -43,7 +46,7 @@ public:
 				case 'a':
 					replace = '&';
 					break;
-					
+
 				}
 				unsigned j = i;
 				while (s[j] != ';') {

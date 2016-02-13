@@ -16,19 +16,13 @@ LDFLAGS =   -g
 #CXXFLAGS += -stdlib=libc++
 #LDFLAGS +=  -stdlib=libc++
 
-# Targets
-PROGS = spell
-
-all: $(PROGS)
-
-spell: dictionary.o spell.o word.o
-	$(CXX) $(CXXFLAGS) dictionary.o spell.o word.o -o $(PROGS)
-# Targets rely on implicit rules for compiling and linking
+prim: 
+	$(CXX) $(CXXFLAGS) prim.cc -o prim && ./prim
 tr: 
 	$(CXX) $(CXXFLAGS) tr.cc -o tr && ./tr
 
 # Phony targets
-.PHONY: all clean tr
+.PHONY: all clean tr prim
 
 # Standard clean
 clean:
