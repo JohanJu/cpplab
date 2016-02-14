@@ -20,11 +20,13 @@ int main() {
 	}
 	cout << endl;
 
-	n = 100000;
+	n = 50000000;
 	p= string(n, 'p');
 	
 	for (unsigned i = 2; i < n; ++i)
 	{
+		if(p[i]=='c')
+			continue;
 		for (unsigned j = i*2; j < n; j += i) {
 			p[j] = 'c';
 		}

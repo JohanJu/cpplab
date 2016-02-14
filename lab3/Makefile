@@ -8,7 +8,7 @@ CC  = g++
 # if you use clang++ and wish to use libc++ instead of GNU's libstdc++.
 # -g is for debugging.
 CPPFLAGS =  -std=c++11
-CXXFLAGS =  -O2 -Wall -Wextra -pedantic-errors 
+CXXFLAGS =  -O2 -Wall -Wextra -pedantic-errors -Wfatal-errors
 CXXFLAGS += -std=c++11 
 CXXFLAGS += -g
 LDFLAGS =   -g 
@@ -17,12 +17,14 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 prim: 
-	$(CXX) $(CXXFLAGS) prim.cc -o prim && ./prim
+	$(CXX) $(CXXFLAGS) prim.cc -o prim
 tr: 
 	$(CXX) $(CXXFLAGS) tr.cc -o tr && ./tr
+date: 
+	$(CXX) $(CXXFLAGS) date.cc date_test.cc -o date && ./date
 
 # Phony targets
-.PHONY: all clean tr prim
+.PHONY: all clean tr prim date
 
 # Standard clean
 clean:
