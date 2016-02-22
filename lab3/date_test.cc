@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ostream>
+#include <istream>
 #include <iomanip> // for setw and setfill
 #include "date.h"
 
@@ -15,9 +17,35 @@ void print(const Date& d) {
 	cout << setw(2) << setfill('0') << d.getDay();
 }
 
+template <typename T>
+string toString(const T& t) {
+	ostringstream os;
+	string s = "sdfsd";
+	os << t;
+	string str = os.str();
+	return str;
+}
+template <typename U>
+U string_cast(string s) {
+	istringstream is(s);
+	U u;
+	if(!(is >> u)){
+		throw invalid_argument("invalid_argument");
+	}
+	return u;
+}
+
 int main() {
 	// Check input and output of dates. Uncomment the following when you 
 	// have added operator>> and operator<<.
+
+	try {
+		int i = string_cast<int>("123");
+		double d = string_cast<double>("12.34");
+		Date date = string_cast<Date>("2q5-01-10");
+	} catch (std::invalid_argument& e) {
+		cout << "Error: " << e.what() << endl;
+	}
 	
 	bool cont = true;
 	while (cont) {

@@ -49,7 +49,7 @@ public:
 
 				}
 				unsigned j = i;
-				while (s[j] != ';') {
+				while (j<s.size()&&s[j] != ';' ) {
 					++j;
 				}
 				s.insert(i, string(1, replace));

@@ -20,7 +20,7 @@ int main() {
 	}
 	cout << endl;
 
-	n = 50000000;
+	n = 1000000;
 	p= string(n, 'p');
 	
 	for (unsigned i = 2; i < n; ++i)

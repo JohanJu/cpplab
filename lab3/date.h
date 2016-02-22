@@ -17,7 +17,7 @@ private:
 	int day;   // the day (1-..)
 	static int daysPerMonth[12]; // number of days in each month
 };
-std::ostream& operator<<(std::ostream &o, Date &d);
+std::ostream& operator<<(std::ostream &o,const Date &d);
 std::istream& operator>>(std::istream &i, Date &d);
 
 #endif

@@ -1,6 +1,6 @@
 #include <ctime>  // time and localtime
 #include "date.h"
-
+#include <regex>
 
 using namespace std;
 
@@ -46,14 +46,28 @@ void Date::next() {
 	}
 }
 
-ostream& operator<<(ostream &o, Date &d){
-	o << d.getYear() << "-" << d.getMonth() << "-" << d.getDay();
+ostream& operator<<(ostream &o,const Date &d){
+	o << d.getYear() << "-";
+	if(d.getMonth()<10)
+		o << "0"; 
+	o << d.getMonth() << "-";
+	if(d.getDay()<10)
+		o << "0"; 
+	o << d.getDay();
+
+
+
+	// o << d.getYear() << "-" << d.getMonth() << "-" << d.getDay();
 	return o;
 }
-istream& operator>>(istream &i, Date &d){
+istream& operator>>(istream &i, Date &d) {
 	string s;
 	i >> s;
-	if(s.size()!=10){
+	regex e("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]");
+
+
+
+	if(!regex_match (s,e)){
 		i.setstate(ios_base::failbit);
 		return i;
 	}
