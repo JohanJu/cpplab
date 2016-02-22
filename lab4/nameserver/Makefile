@@ -10,7 +10,7 @@ CC  = g++
 CPPFLAGS =  -std=c++11
 CXXFLAGS =  -O2 -Wall -Wextra -pedantic-errors -Wfatal-errors
 CXXFLAGS += -std=c++11 
-CXXFLAGS += -g
+CXXFLAGS += -pg -fprofile-arcs -ftest-coverage
 LDFLAGS =   -g 
 #CPPFLAGS += -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
@@ -18,10 +18,10 @@ LDFLAGS =   -g
 
 vns: 
 	$(CXX) $(CXXFLAGS) vns.cc -o vns.exe
-tr: 
-	$(CXX) $(CXXFLAGS) tr.cc -o tr && ./tr
-date: 
-	$(CXX) $(CXXFLAGS) date.cc date_test.cc -o date && ./date
+nstest: 
+	$(CXX) $(CXXFLAGS) nstest.cc -o nstest.exe
+nstime: 
+	$(CXX) $(CXXFLAGS) nstime.cc -o nstime.exe
 
 # Phony targets
 .PHONY: all clean tr prim date

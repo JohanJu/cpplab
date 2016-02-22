@@ -3,10 +3,10 @@
  * the three different name server implementations.
  */
 #include "nameserverinterface.h"
-#include "vns.h"
-#include "mns.h"
-#include "umns.h"
-#include "hns.h"
+#include "vns.cc"
+#include "mns.cc"
+#include "umns.cc"
+#include "hns.cc"
 #include <iostream>
 #include <fstream>
 #include <string>

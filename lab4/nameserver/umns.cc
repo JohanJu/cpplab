@@ -1,13 +1,11 @@
 #include "nameserverinterface.h"
-#include <vector>
+#include <unordered_map>
 #include <utility>
 #include <algorithm>
 
-using namespace std;
+class UMNS: public NameServerInterface {
 
-class VNS: public NameServerInterface {
-
-	vector<pair< HostName, IPAddress>> vns;
+	unordered_map< HostName, IPAddress> mns;
 
 public:
 
@@ -16,7 +14,7 @@ public:
 	 * or address already exists.
 	 */
 	void insert(const HostName& h, const IPAddress& i) {
-		vns.push_back(pair<HostName, IPAddress>(h, i));
+		mns[h] = i;
 	}
 
 	/*
@@ -25,13 +23,7 @@ public:
 	 * otherwise.
 	 */
 	bool remove(const HostName& h) {
-		auto pa = find_if(vns.begin(), vns.end(),
-		[h](pair<HostName, IPAddress> p) { return p.first == h; });
-		if (pa != vns.end()){
-			vns.erase(pa);
-			return true;
-		}
-		return false;
+		return mns.erase(h)>0;
 	}
 
 	/*
@@ -41,16 +33,9 @@ public:
 	 */
 	IPAddress lookup(const HostName& h) const {
 
-		auto pa = find_if(vns.begin(), vns.end(),
-		[h](pair<HostName, IPAddress> p) { return p.first == h; });
-		if (pa != vns.end())
+		auto pa = mns.find(h);
+		if (pa != mns.end())
 			return pa->second;
 		return NON_EXISTING_ADDRESS;
 	}
 };
-
-// int main() {
-// 	hash<string> hash_fn;
-// 	// cout << sizeof(hash_fn("aasdaasdasdsd")) << endl;
-
-// }
