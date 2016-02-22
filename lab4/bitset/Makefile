@@ -18,8 +18,10 @@ LDFLAGS =   -g
 
 sb: 
 	$(CXX) $(CXXFLAGS) simplebitsettest.cc simplebitset.cc -o simplebitsettest.exe
-bt: 
-	$(CXX) $(CXXFLAGS) bitset.cc bitreference.cc bitsettest1.cc -o bt.exe
+bt1: 
+	$(CXX) $(CXXFLAGS) bitset.cc bitreference.cc bitsettest1.cc -o bt1.exe
+bt2: 
+	$(CXX) $(CXXFLAGS) bitset.cc bitreference.cc bitsettest2.cc -o bt2.exe
 
 
 # Phony targets
