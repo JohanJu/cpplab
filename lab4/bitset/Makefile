@@ -16,12 +16,11 @@ LDFLAGS =   -g
 #CXXFLAGS += -stdlib=libc++
 #LDFLAGS +=  -stdlib=libc++
 
-vns: 
-	$(CXX) $(CXXFLAGS) vns.cc -o vns.exe
-nstest: 
-	$(CXX) $(CXXFLAGS) nstest.cc -o nstest.exe
-nstime: 
-	$(CXX) $(CXXFLAGS) nstime.cc -o nstime.exe
+sb: 
+	$(CXX) $(CXXFLAGS) simplebitsettest.cc simplebitset.cc -o simplebitsettest.exe
+bt: 
+	$(CXX) $(CXXFLAGS) bitset.cc bitreference.cc bitsettest1.cc -o bt.exe
+
 
 # Phony targets
 .PHONY: all clean tr prim date

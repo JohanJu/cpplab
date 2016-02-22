@@ -8,19 +8,23 @@ using namespace std;
 class HNS: public NameServerInterface {
 
 	vector<vector<pair<HostName, IPAddress>>> out;
+	// vector<map<HostName,IPAddress>> out;
 	int nbr;
 public:
 	inline  int ha(const string& s) const {
 		hash<string> hash;
 		return hash(s) % nbr;
-		// return hash(s);
+		// return hash(s&0x3fff;
 	}
 
 	HNS(int nr) {
+		// nr = 0x3fff;
 		nbr = nr;
 		for (int i = 0; i < nr; ++i)
 		{
 			out.push_back(vector<pair<HostName, IPAddress>>());
+			// out.push_back(map<HostName,IPAddress>());
+
 		}
 	}
 	/*
@@ -29,6 +33,7 @@ public:
 	 */
 	void insert(const HostName& h, const IPAddress& i) {
 		out[ha(h)].push_back(pair<HostName, IPAddress>(h, i));
+		// (out[ha(h)]).[h] = i;
 	}
 
 	/*
@@ -46,6 +51,7 @@ public:
 			return true;
 		}
 		return false;
+		// return out[ha(h)].erase(h)>0;
 	}
 
 	/*
@@ -62,5 +68,10 @@ public:
 			return pa->second;
 		}
 		return NON_EXISTING_ADDRESS;
+		// auto m = out[ha(h)];
+		// auto pa = m.find(h);
+		// if (pa != m.end())
+		// 	return pa->second;
+		// return NON_EXISTING_ADDRESS;
 	}
 };
